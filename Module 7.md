@@ -134,33 +134,29 @@ Use scanf to input the file name into the name array.
 Program:
 ```
 #include <stdio.h>
-
-int main() {
-    char filename[100];
+int main()
+{
+    char file[100];
+    scanf("%s",file);
     FILE *fp;
-    char content[1000];
-
-    printf("Enter the file name: ");
-    scanf("%s", filename);
-
-    fp = fopen(filename, "w");
-    if (fp == NULL) {
-        return 1;
+    fp=fopen("file","w");
+    if(fp==NULL)
+    {
+        printf("Error");
     }
-    
+    else
+    {
+        printf("%s File Created Successfully\n%s File Opened\n",file,file);
 
-    getchar();
-    fgets(content, sizeof(content), stdin);
-
-    fputs(content, fp);
+    }
     fclose(fp);
-
-    return 0;
+    printf("%s File Closed",file);
+    
 }
 ```
 Output:
 
-![Screenshot 2025-04-25 141247](https://github.com/user-attachments/assets/0e62d6b2-c6b7-4559-8e83-769fd4a572d2)
+![Screenshot 2025-04-25 143528](https://github.com/user-attachments/assets/be0a68eb-29ad-4276-a5b4-3c1512d4e660)
 
 
 Result:
@@ -190,33 +186,33 @@ Use scanf to input the file name into the name array and the number of strings i
  
 Program:
 ```
-#include <stdio.h>
-
-int main() {
-    char filename[100]; 
+#include<stdio.h>
+int main()
+{
+    char file[100];
+    int n,roll;
+    scanf("%s%d",file,&n);
+    char name[100],city[100];
     FILE *fp;
-    char content[1000];
-
-printf("Enter the file name: ");
-scanf("%s", filename);
-
-fp = fopen(filename, "w");
-if (fp == NULL) {
-    return 1;
-}
-
-getchar();
-printf("Enter text to insert into the file:\n");
-fgets(content, sizeof(content), stdin);
-
-fputs(content, fp);
-fclose(fp);
-
-return 0;
+    fp=fopen("file","w");
+    printf("%s Opened\n",file);
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d%s%s",&roll,name,city);
+        fprintf(fp,"%d%s%s",roll,name,city);
+    }
+    if (fp==NULL)
+    {
+        printf("Error");
+    }
+    else
+    {
+        printf("Data added Successfully\n");
+    }
 }
 ```
 Output:
-![Screenshot 2025-04-25 141315](https://github.com/user-attachments/assets/edb97a96-edad-4427-bab5-b01f9a065ad9)
+![Screenshot 2025-04-25 143555](https://github.com/user-attachments/assets/e12ebdf3-4a44-4cfb-ae3d-39c7abbc5158)
 
 
 Result:
